@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Sertifikat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9fb;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .icon {
+      font-size: 50px;
+      color: #2196F3;
+      margin-bottom: 15px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #333;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #00bcd4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #0097a7;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: left;
+      background: #f0f9ff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #b3e5fc;
+    }
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      background: #4caf50;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📄</div>
+    <h2>Masukkan Nomor Sertifikat</h2>
+    <input type="text" id="nomor" placeholder="Masukkan nomor sertifikat">
+    <br>
+    <button onclick="verifikasi()">Cari</button>
+
+    <div id="hasil"></div>
+  </div>
+
+  <script>
+    function verifikasi() {
+      const nomor = document.getElementById("nomor").value.trim();
+      let hasilBox = document.getElementById("hasil");
+
+      // jika input sama persis dengan nomor contoh
+      if (nomor === "13.004/DO-NSMP/VIII/2025/IYEIQ917") {
+        hasilBox.innerHTML = `
+          <div class="result">
+            <p><b>No. Sertifikat:</b> ${nomor}</p>
+            <p><b>Nama:</b> DEDI IDAYANTO, S.Kom</p>
+            <p><b>NIP:</b> 197712092011011001</p>
+            <p><b>Asal Sekolah:</b> SMA N 1 Kedungreja</p>
+            <p><b>Kelas:</b> Diklat Nasional Mengenal Dasar dalam Merancang Pembelajaran Mendalam yang Bermakna dan Reflektif</p>
+            <p><b>Status:</b> <span class="status">Terverifikasi</span></p>
+          </div>
+        `;
+      } else {
+        // kalau input tidak sesuai → tetap tampil sertifikat dummy
+        hasilBox.innerHTML = `
+          <div class="result">
+            <p><b>No. Sertifikat:</b> ${nomor || '(tidak diisi)'}</p>
+            <p><b>Nama:</b> DEDI IDAYANTO, S.Kom</p>
+            <p><b>NIP:</b> 197712092011011001</p>
+            <p><b>Asal Sekolah:</b> SMA N 1 Kedungreja</p>
+            <p><b>Kelas:</b> Diklat Nasional Mengenal Dasar dalam Merancang Pembelajaran Mendalam yang Bermakna dan Reflektif</p>
+            <p><b>Status:</b> <span class="status">Terverifikasi</span></p>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
